@@ -1,7 +1,7 @@
 <ol>
 <% @tasks.each do |task| %>
 <li>  <%= task.content %>
-   <%= form_for :task, :url => { :controller => "tasks", :metho => "put" }, :remote => true do |t|%>
+   <%= form_for :task, :url => { :controller => "tasks", :method => "put" }, :remote => true do |t|%>
    <%= t.hidden_field :id, :value => task.id %>
 	   <%= t.check_box :done, :checked => task.done, :class => 'checkable' %>   </li>
   <% end %>
