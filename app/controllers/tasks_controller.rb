@@ -49,6 +49,7 @@ class TasksController < ApplicationController
   def my
     @user = current_user
     @tasks = @user.tasks
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @task }

@@ -1,11 +1,23 @@
 <% @tasks.each do |task| %>
-  <%= form_for :task, :url => { :controller => "tasks", :metho => "put" }, :remote => true do |t|%>
+  <%= task.content %>
+   <%= form_for :task, :url => { :controller => "tasks", :metho => "put" }, :remote => true do |t|%>
     <%= t.hidden_field :id, :value => task.id %>
-	<%= t.check_box :done, :checked => task.done, :class => 'checkable' %>    
-	 <%= t.label :content, task.content.html_safe,  :style => "color: #666666; margin-top: 0px;" %>
-    <br />          
+
+	   <%= t.check_box :done, :checked => task.done, :class => 'checkable' %>    
   <% end %>
 <% end %>
 
 
-<%= link_to "New Task", new_task_path %> 
+<%= form_for(@user.tasks.build) do |f| %>
+<table>
+  <tr>
+    <h3>Create new task</h3>
+    <th>Content</th> 
+  </tr>
+  <tr>   
+   <td><%= f.text_field :content %></td>
+  </tr>
+
+</table>
+    <%= f.submit %>
+<% end %>
