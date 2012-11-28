@@ -5,7 +5,7 @@ Todo::Application.routes.draw do
 
   resources :tasks 
 
- match '/my',  :to => 'tasks#my'
+	 match '/my',  :to => 'tasks#my'
 
 
     root :to => "tasks#index"

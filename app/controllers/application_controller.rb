@@ -17,11 +17,11 @@ end
 
 def record_not_found
   flash[:notice] = "No such entry"
-  redirect_to :homepage
+  redirect_to :root
 end
 
 def record_invalid
   flash[:error] = "Such entry already exists, try something else."
-  redirect_to :homepage
+  redirect_to :root
 end
 end
