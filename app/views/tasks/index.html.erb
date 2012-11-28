@@ -1,5 +1,10 @@
+<ol>
 <% @tasks.each do |t| %>
-<%= t.user.email %> 
-<%= t.content %> 
-<%= t.done %>
+<li><%= t.user.email %> : 
+<% if t.done %>
+<del><%= t.content %></del> </li>
+<%else%>
+ <%= t.content %></li>
+  <% end %>
 <% end %>
+</ol>
