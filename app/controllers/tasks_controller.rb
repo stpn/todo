@@ -23,7 +23,6 @@ class TasksController < ApplicationController
   def new
     @task =  current_user.tasks.new
     respond_to do |format|
-      format.html # show.html.erb
       format.json { render json: @task }
     end
   end
@@ -56,16 +55,31 @@ class TasksController < ApplicationController
     end
   end
 
+  def done
+    @task = Task.find(params[:task][:id])
+    Rails.logger.info(@task.errors.inspect)
+    respond_to do |format|
+      if @task.update_attributes(params[:task])
+
+        format.json { head :ok }
+      else
+
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+
+  
+  end
 
   def update
     @task = Task.find(params[:id])
-
+    Rails.logger.info(@task.errors.inspect)
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to @task, notice: 'task was successfully updated.' }
+
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
+
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end

@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordInvalid, :with => :record_invalid
 
-  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   def store_location
   session[:return_to] = request.url
