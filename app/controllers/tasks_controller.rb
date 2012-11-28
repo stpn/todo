@@ -3,7 +3,6 @@ class TasksController < ApplicationController
 
  def index
     @tasks = Task.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tasks }
@@ -45,6 +44,15 @@ class TasksController < ApplicationController
     # GET /sentences/1/edit
   def edit
     @task = Task.find(params[:id])
+  end
+
+  def my
+    @user = current_user
+    @tasks = @user.tasks
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @task }
+    end
   end
 
 
