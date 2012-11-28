@@ -1,0 +1,15 @@
+<div  id = "header" >
+
+  
+		<div class ="span " style="float:right; margin-right:9%"><%= link_to "ToDos", :root %> </a></div>
+
+	<div class ="span" id ="register" > 
+		<% if !user_signed_in? %>
+			<div class ="span" ><%= link_to "Register", new_user_registration_path %> </div>
+			<div class ="span"  ><%= link_to "Log In", new_user_session_path  %></a></div>
+		<% else %>
+			<div class ="span" ><%= link_to("Log Out", destroy_user_session_path, :method => :delete)%></div>
+		<% end %>
+	</div>
+
+</div>
